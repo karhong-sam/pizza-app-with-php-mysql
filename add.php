@@ -13,7 +13,8 @@
         //check email
         if(empty($_POST['email'])){
             $errors['email'] = 'An emails required <br/>';
-        } else {
+        } 
+        else {
             $email = $_POST['email'];
             if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
                 $errors['email'] = 'Email must be a valid email address <br/>';
@@ -23,7 +24,8 @@
         //check title
         if(empty($_POST['title'])){
             $errors['title'] = 'A title required <br/>';
-        } else {
+        } 
+        else {
             $title = $_POST['title'];
             if(!preg_match('/^[a-zA-Z\s]+$/', $title)){
                 $errors['title'] = 'Title must be letters and spaces only <br/>';
@@ -33,7 +35,8 @@
         //check ingredients
         if(empty($_POST['ingredients'])){
             $errors['ingredients'] = 'At least one ingredient is required <br/>';
-        } else {
+        } 
+        else {
             $ingredients = $_POST['ingredients'];
             if(!preg_match('/^([a-zA-Z\s]+)(,\s*[a-zA-Z\s]*)*$/', $ingredients)){
                 $errors['ingredients'] = 'Ingredients must be a comma separated list <br/>';
@@ -42,7 +45,8 @@
 
         if(array_filter($errors)){
 			//echo 'errors in form';
-		} else {
+		} 
+        else {
 			// escape sql chars
 			$email = mysqli_real_escape_string($conn, $_POST['email']);
 			$title = mysqli_real_escape_string($conn, $_POST['title']);
@@ -55,7 +59,8 @@
 			if(mysqli_query($conn, $sql)){
 				// success
 				header('Location: index.php');
-			} else {
+			} 
+            else {
 				echo 'query error: '. mysqli_error($conn);
 			}
 		}
